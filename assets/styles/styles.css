@@ -8,56 +8,37 @@
 
 .inner-block {
     border: 2px solid red;
-    width: 50px;
-    height: 50px;
 }
 
 .grid-parent {
     display: grid;
-    /* сторюємо сітку: */
-    /* зазначаємо кількість і ширину колонок - пікселі, відсотки, rem, em, vw, grid-частина fr*/
-    /* grid-template-columns: 100px 100px 100px; */
-    /* grid-template-columns: 25% 50% 25%; */
-    /* grid-template-columns: 200px 1fr 25%; */
-    /* grid-template-columns: 1fr 1fr 1fr; */
-    /* grid-template-columns: 1fr 2fr; */
-    /* grid-template-columns: 1fr minmax(200px, 800px) 1fr; */
-    /* grid-template-columns: repeat(6, 1fr); */
-    /* grid-template-columns: repeat(4, 1fr); */
-    /* auto-fill - дозволяє не встановлювати точну к-сть колонок, а дозволяє наповнювати сітку такою кількістю колонок яка влазить в залежності від ширини кожного елемента, єдине що буде завжди заалишатись трохи вільного простору в кінці рядочка */
-    /* grid-template-columns: repeat(auto-fill, 100px); */
-    /* auto-fit - дозволяє автоматично вміщувати максимальну кількість колонок з гнучкими параметрами ширини, адаптовуючи їх автоматично так щоб вони займали увесь рядок, і тоді в кінці рядка не залишиться пустого місця */
-    /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
 
-    /* зазначаємо кількість і висоту рядочків */
-    /* grid-template-rows: 50px 50px; */
-    /* grid-template-rows: repeat(4, 200px); */
-
-    /* Всі вищезазначені параментри це були явні Гріди, коли ми знаємо кількість рядків і колонок, хоча б приблизно */
-    /* А ще є неявний Грід, де ми можем налаштовувати куди будуть переносиитись чи не переноситись комірки які не вміщуються в рядочок */
-
-    /* auto-flow - визначає в якому напрямку переносяться комірки які не влазять в рядок */
-    /* grid-auto-flow: row; */
-    /* auto-rows - задаємо висоту для рядків,в т.ч. тих, що переносяться в нові рядки */
-    /* grid-auto-rows: 100px; */
-
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 100px);
-
-    /* align-items - рухає контент по вертикалі в середині комірки */
-    /* justify-items - рухає контент по горизонталі в середині комірки */
-
-    justify-items: end;
-    align-items: start;
-
-    /* align-content - рухає саму комірку по вертикалі в межах стіки ГРІД, для цього сітка має бути більша ніж заг.величина комірок */
-    /* justify-content - рухає самі комірки по горизонталі в межах сітки ГРІД, для цього сітка має бути більша ніж заг.величина комірок */
-
-    /* gap - задаємо відстань між комірками в сітці, можна задавати два параметри перший відстань між рядками, друга відстань між колонками */
-    /* row-gap - задаємо окремо відстань між рядками */
-    /* column-gap - задаємо окремо відстань між колонками */
 }
 
 .grid-child {
 
 }
+
+.grid-child:nth-child(1) {
+    /* grid-column-start: 1;
+    grid-column-end: 3; */
+    grid-column: 1 / 3;
+}
+
+.grid-child:nth-child(4) {
+    /* grid-column-start: 2;
+    grid-column-end: 4; */
+    grid-column: 2 / 4;
+}
+
+.grid-child:nth-child(3) {
+    /* grid-row-start: 2;
+    grid-row-end: 4; */
+    grid-row: 2 / 4;
+}
+
+/* grid-area: ; - вміщує в себе 4 параметра grid-column-start, grid-column-end, grid-row-start, grid-row-end */
+
