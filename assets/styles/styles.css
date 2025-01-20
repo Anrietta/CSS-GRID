@@ -2,53 +2,67 @@
     box-sizing: border-box;
 }
 
-.outer-container {
-    border: 2px solid green;
+.header, .nav, .main, .footer {
+    border: 1px solid red;
 }
 
-.inner-box {
-    border: 2px solid red;
-}
+body {
+    min-height: 100vh;
+    
 
-.grid-parent {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
-    gap: 10px;
+    grid-template-columns: 1fr minmax(200px, 300px) minmax(400px, 600px) 1fr;
+    grid-template-rows: 250px 1fr 150px;
 
-    /* ASCII Графіка - можливість графічно відобразитти сітку та присвоїти всім дочірнім елементам імена. При використанні grid-template-area слід враховувати саму сітку, кількість рядків та колонок */
-    /* якщо нам потрібно залишити одну комірку пустою то замість значененя просто ставим крапочку */
     grid-template-areas: 
-    'b1 b2 b3'
-    'b4 b5 b5'
-    'b6 b6 b6';
-
+    'pageHeader pageHeader pageHeader pageHeader'
+    '.          pageNav    pageMain   .'
+    'pageFooter pageFooter pageFooter pageFooter';
 }
 
-.grid-child:nth-child(1) {
-    grid-area: b1;
+.header {
+    grid-area: pageHeader;
 }
 
-.grid-child:nth-child(2) {
-    grid-area: b2;
+.nav {
+    grid-area: pageNav;
 }
 
-.grid-child:nth-child(3) {
-    grid-area: b3;
+.main {
+    padding: 20px;
+
+    grid-area: pageMain;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 20px;
+
+    align-content: start;
 }
 
-.grid-child:nth-child(4) {
-    grid-area: b4;
+.grid-child {
+    height: 80px;
+    border: 1px solid green;
 }
 
-.grid-child:nth-child(5) {
-    grid-area: b5;
+.footer {
+    grid-area: pageFooter;
 }
 
-.grid-child:nth-child(6) {
-    grid-area: b6;
-}
+@media screen and (max-width: 650px) {
 
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: 250px auto 1fr 100px;
+
+        grid-template-areas: 
+        'pageHeader'
+        'pageNav'
+        'pageMain'
+        'pageFooter';
+    }
+    
+}
 
 
 
